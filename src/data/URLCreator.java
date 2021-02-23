@@ -10,7 +10,7 @@ import java.util.StringJoiner;
 
 public class URLCreator {
 
-    public static void sendPostRequest(String[] values) throws IOException, InterruptedException {
+    public static boolean sendPostRequest(String title, String description) throws IOException, InterruptedException {
         //setting up the connection
         String NEWSFEED_ADDRESS = "malegro.ddns.net:8080/newsfeed";
         URL url = new URL(NEWSFEED_ADDRESS);
@@ -21,8 +21,8 @@ public class URLCreator {
 
         //Setting up and convert values which will be send
         Map<String, String> arguments = new HashMap<>();
-        arguments.put("title", values[0]);
-        arguments.put("description", values[1]);
+        arguments.put("title", title);
+        arguments.put("description", description);
         StringJoiner sj = new StringJoiner("&");
         for(Map.Entry<String, String> entry: arguments.entrySet()) {
             sj.add(URLEncoder.encode(entry.getKey(), StandardCharsets.UTF_8) + "=" + URLEncoder.encode(entry.getValue(), StandardCharsets.UTF_8));
@@ -48,9 +48,12 @@ public class URLCreator {
         }
 
         if(http.getResponseCode() == 400) {
-            System.out.println("Something went wrong. " + values[0] + " " + values[1]);
+            System.out.println("Something went wrong. " + title + " " + description);
+            http.disconnect();
+            return false;
         }
         http.disconnect();
+        return true;
     }
 
 }

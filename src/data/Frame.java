@@ -2,6 +2,7 @@ package data;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class Frame {
 
@@ -27,11 +28,20 @@ public class Frame {
             //System.out.println("Description: " + description);
             //TODO: check for successful response
             if(!title.equals("") && !description.equals("")) {
-                boolean response = true;
+                boolean response = false;
+                try {
+                    response = URLCreator.sendPostRequest(title, description);
+                } catch (IOException | InterruptedException ioException) {
+                    ioException.printStackTrace();
+                }
                 if(response) {
                     JOptionPane.showMessageDialog(null, "Sending of data was successful.", "InfoBox: Successful Sending", JOptionPane.INFORMATION_MESSAGE);
+                    titleTextField.setText("");
+                    descriptionTextField.setText("");
                 } else {
                     JOptionPane.showMessageDialog(null, "Sending of data was not successful.", "InfoBox: Unsuccessful Sending", JOptionPane.INFORMATION_MESSAGE);
+                    titleTextField.setText("");
+                    descriptionTextField.setText("");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "There has to be text in the textfields.", "InfoBox: Data wasn't send.", JOptionPane.INFORMATION_MESSAGE);
