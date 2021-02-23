@@ -20,6 +20,13 @@ public class Frame {
         titleTextField.setPreferredSize(new Dimension(100, titleTextField.getPreferredSize().height));
         descriptionTextField.setPreferredSize(new Dimension(400, descriptionTextField.getPreferredSize().height));
 
+        sendingButton.addActionListener(e -> {
+            String title = titleTextField.getText();
+            String description = descriptionTextField.getText();
+            //System.out.println("Title: " + title);
+            //System.out.println("Description: " + description);
+        });
+
         //adding components to panel
         panel.add(titleLabel);
         panel.add(titleTextField);
