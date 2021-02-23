@@ -25,6 +25,15 @@ public class Frame {
             String description = descriptionTextField.getText();
             //System.out.println("Title: " + title);
             //System.out.println("Description: " + description);
+            //TODO: check for successful response
+
+            boolean response = true;
+            if(response) {
+                JOptionPane.showMessageDialog(null, "Sending of data was successful.", "InfoBox: Successful Sending", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Sending of data was not successful.", "InfoBox: Unsuccessful Sending", JOptionPane.INFORMATION_MESSAGE);
+            }
+
         });
 
         //adding components to panel
