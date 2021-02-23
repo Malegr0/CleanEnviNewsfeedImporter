@@ -12,7 +12,7 @@ public class URLCreator {
 
     public static boolean sendPostRequest(String title, String description) throws IOException, InterruptedException {
         //setting up the connection
-        String NEWSFEED_ADDRESS = "malegro.ddns.net:8080/newsfeed";
+        String NEWSFEED_ADDRESS = "http://malegro.ddns.net:8080/newsfeed";
         URL url = new URL(NEWSFEED_ADDRESS);
         URLConnection con = url.openConnection();
         HttpURLConnection http = (HttpURLConnection) con;
@@ -32,7 +32,7 @@ public class URLCreator {
 
         //sending data
         http.setFixedLengthStreamingMode(length);
-        http.setRequestProperty("Content-Type", "applocation/x-www-form-urlencoded; charset=UTF-8");
+        http.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
         boolean connect = true;
         while(connect) {
             try {

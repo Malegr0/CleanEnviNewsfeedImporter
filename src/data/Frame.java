@@ -36,15 +36,13 @@ public class Frame {
                 }
                 if(response) {
                     JOptionPane.showMessageDialog(null, "Sending of data was successful.", "InfoBox: Successful Sending", JOptionPane.INFORMATION_MESSAGE);
-                    titleTextField.setText("");
-                    descriptionTextField.setText("");
                 } else {
                     JOptionPane.showMessageDialog(null, "Sending of data was not successful.", "InfoBox: Unsuccessful Sending", JOptionPane.INFORMATION_MESSAGE);
-                    titleTextField.setText("");
-                    descriptionTextField.setText("");
                 }
+                titleTextField.setText("");
+                descriptionTextField.setText("");
             } else {
-                JOptionPane.showMessageDialog(null, "There has to be text in the textfields.", "InfoBox: Data wasn't send.", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "There has to be text in both textfields.", "InfoBox: Data wasn't send.", JOptionPane.INFORMATION_MESSAGE);
             }
 
 
