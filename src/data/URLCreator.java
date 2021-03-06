@@ -12,7 +12,7 @@ public class URLCreator {
 
     public static boolean sendPostRequest(String title, String description) throws IOException, InterruptedException {
         //setting up the connection
-        String NEWSFEED_ADDRESS = "http://malegro.ddns.net:8080/newsfeed";
+        String NEWSFEED_ADDRESS = "https://b15f6255307e.ngrok.io/newsfeed";
         URL url = new URL(NEWSFEED_ADDRESS);
         URLConnection con = url.openConnection();
         HttpURLConnection http = (HttpURLConnection) con;
